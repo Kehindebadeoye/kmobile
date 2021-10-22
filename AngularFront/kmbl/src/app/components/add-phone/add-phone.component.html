@@ -1,0 +1,18 @@
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title">new device</h5>
+
+      <form [formGroup]="newPhoneToAdd">
+        <input type="text" formControlName="phoneNumber"   readonly>
+        <input type="text" formControlName="deviceName"   placeholder="first name">
+        <input type="text" formControlName="deviceSerialNumber"   placeholder="last name">
+        <button class="btn btn-primary" (click)="getNumber()">obtain number</button>
+        <div>
+          <button class="btn btn-primary float-right" type="submit" (click)="addPhone()" [disabled]="!newPhoneToAdd.valid">add device</button>
+        </div>
+        
+
+      </form>
+    </div>
+  </div>
+

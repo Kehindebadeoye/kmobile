@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class=" col-6">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Account#:</td>
+                        <td>email</td>
+                        <td>plans #</td>
+                        <td>add plan</td>
+                        <td></td>
+                        <td></td>
+                        <td>monthly payment</td>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{account.accountId}}</td>
+                        <td>{{account.email}}</td>
+                        <td>{{account.plan.length}}</td>
+                        <td><a routerLink="/newplan">new plan</a></td>
+                        <td></td>
+                        <td></td>
+                        <td> ${{sum}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <!-- <app-add-plan></app-add-plan> -->
+        </div>
+    </div>
+
+
+    <div *ngFor="let onePlan of account.plan">
+        <app-plan-detail [onePlan]=(onePlan)></app-plan-detail>
+    </div>
+</div>

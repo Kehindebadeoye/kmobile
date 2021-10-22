@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row col-10">
+        <table class="table table-hover table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Plan type</th>
+                    <th scope="col">Phone line</th>
+                    <th scope="col">add device</th>
+                    <th scope="col">edit plan</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{onePlan.planId}}</td>
+                    <td>{{onePlan.planType}}</td>
+                    <td>{{onePlan.devices.length}}</td>
+                    <td>
+                        <i class="far fa-plus-square fa-1x orange" (click)="showAddDevice()"></i>
+
+                    </td>
+                    <td>
+                        <i class="fas fa-pencil-alt fa-1x green" ></i>
+                        <i class="fas fa-trash-alt fa-1x red" (click)="deletePlan()"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="addPhoneBox">
+            <app-add-phone [onePlan]=(onePlan)></app-add-phone>
+        </div>
+
+    </div>
+
+
+    <div>
+        <div class="container">
+            <div class="row col-8">
+                <table class="table table-hover table-success" *ngIf="onePlan.devices.length !== 0">
+                    <thead>
+                        <tr>
+                            <th scope="col">number</th>
+                            <th scope="col">first name</th>
+                            <th scope="col">last name</th>
+                            <th>edit device</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let onePhone of onePlan.devices" >
+                            <td>{{onePhone.phoneNumber}}</td>
+                            <td contenteditable="true" >{{onePhone.deviceName}}</td>
+                            <td contenteditable="true" >{{onePhone.deviceSerialNumber}}</td>
+                            <td>
+                                <i class="far fa-save fa-1x blue" (click)="editPhone()"></i>
+                                <i class="fas fa-trash-alt fa-1x red" (click)="deletePhone(onePhone.deviceId)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
